@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { navData, NavData } from "@/data/NavData";
+import { navData, NavData } from "@/data/navData";
 import Link from "next/link";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { useRouter } from "next/router";
+
+const navStyle = `flex items-center  gap-2 py-2 px-3 hover:bg-white hover:text-black transition border-y-4 border-y-transparent min-h-[3rem] relative z-[51]`;
+const home = navData[0];
 
 const Nav = () => {
   const router = useRouter();
   const [menuStateOpen, setMenuOpen] = useState(false);
 
-  const home = navData[0];
-
-  const navStyle = `flex items-center  gap-2 p-2 hover:bg-white hover:text-black transition border-y-4 border-y-transparent min-h-[3rem] relative z-[51]`;
-
   const currentPage = (currentLink: string) => {
     if (router.asPath === currentLink) {
-      return "border-b-red-500";
+      return "border-b-white";
     } else {
       return "border-b-transparent";
     }

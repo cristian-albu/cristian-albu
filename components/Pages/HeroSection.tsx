@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { heroSectionData } from "@/data/homeData";
+import { techUsedObj } from "@/data/skill";
+
 const styles = {
   constelationStyle: `aspect-square rounded-full  border-[1px] border-transparent  absolute `,
   plaentStyle: `absolute w-[30px] aspect-square rounded-full  bg-black ml-[-15px] p-1 object-contain shadow-lg shadow-black/50`,
@@ -10,7 +12,7 @@ const HeroSection = () => {
   return (
     <div className=" w-full max-w-full min-h-[100vh] h-full flex justify-center items-center overflow-hidden relative pattern">
       <div className="w-full  flex flex-col justify-center items-center relative z-[50]">
-        <div className="w-full max-w-[70%]  flex justify-between flex-wrap items-center ">
+        <div className="w-full max-w-[85%] md:max-w-[70%]  flex justify-between flex-wrap items-center ">
           <div className="w-full md:w-[50%] flex flex-col gap-3 justify-start items-start">
             <h1 className="text-2xl md:text-5xl">{heroSectionData.title}</h1>
             <p>{heroSectionData.desc}</p>
@@ -23,7 +25,7 @@ const HeroSection = () => {
               className={`w-[100%] ${styles.constelationStyle}  top-0 left-0 animate-spinning1 border-l-black border-b-black border-r-0`}
             >
               <Image
-                src={"/assets/Typescript_logo.png"}
+                src={techUsedObj.typescript.icon}
                 width={30}
                 height={30}
                 alt=""
@@ -34,7 +36,7 @@ const HeroSection = () => {
               className={`w-[82%] ${styles.constelationStyle} top-[9%] left-[9%] animate-spinning2 border-t-black border-r-black border-b-0`}
             >
               <Image
-                src={"/assets/react_logo.png"}
+                src={techUsedObj.react.icon}
                 width={30}
                 height={30}
                 alt=""
@@ -45,7 +47,7 @@ const HeroSection = () => {
               className={`w-[65%]  ${styles.constelationStyle}  top-[17.5%] left-[17.5%] animate-spinning3 border-r-black border-t-black border-l-0`}
             >
               <Image
-                src={"/assets/nextjs_logo.png"}
+                src={techUsedObj.nextjs.icon}
                 width={30}
                 height={30}
                 alt=""
@@ -56,7 +58,7 @@ const HeroSection = () => {
               className={`w-[50%]  ${styles.constelationStyle}  top-[25%] left-[25%] animate-spinning2 border-b-black border-l-black border-t-0`}
             >
               <Image
-                src={"/assets/tailwindcss_logo.png"}
+                src={techUsedObj.tailwindcss.icon}
                 width={30}
                 height={30}
                 alt=""

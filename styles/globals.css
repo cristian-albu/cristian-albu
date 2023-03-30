@@ -1,4 +1,24 @@
 @tailwind base;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+  background-color: white;
+}
+
+*::-webkit-scrollbar-track {
+  background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -27,5 +47,12 @@
       rgba(255, 255, 255),
       transparent
     );
+  }
+
+  .btnPrimary {
+    @apply bg-black text-white px-3 py-2 rounded-lg shadow-lg text-center flex justify-center items-center gap-2 transition hover:scale-[1.03] active:scale-[0.97];
+  }
+  .btnSecondary {
+    @apply bg-transparent text-inherit border-2 border-black px-3 py-2 rounded-lg shadow-lg text-center flex justify-center items-center gap-2 transition hover:scale-[1.03] active:scale-[0.97] hover:bg-black hover:text-white;
   }
 }

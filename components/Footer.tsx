@@ -1,8 +1,9 @@
 import React from "react";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
-import { contactData, footerData, NavData, navData } from "@/data/NavData";
+
 import Link from "next/link";
+import { contactData, footerData, NavData, navData } from "@/data/navData";
 
 const Footer = () => {
   return (

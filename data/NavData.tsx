@@ -4,11 +4,13 @@ import {
   HiOutlinePresentationChartBar,
   HiOutlineMailOpen,
 } from "react-icons/hi";
-
-import { AiFillGithub, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
-
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillInstagram,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { MdAlternateEmail } from "react-icons/md";
-
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
 export interface NavData {
@@ -25,13 +27,26 @@ export const navData: NavData[] = [
     link: "/experience",
     icon: <HiOutlinePresentationChartBar />,
   },
+  { title: "About me", link: "/about", icon: <AiOutlineUser /> },
   { title: "Contact", link: "/contact", icon: <HiOutlineMailOpen /> },
 ];
 
 export const footerData: NavData[] = [
-  { title: "LinkedIn", link: "", icon: <AiFillLinkedin /> },
-  { title: "GitHub", link: "", icon: <AiFillGithub /> },
-  { title: "Instagram", link: "", icon: <AiFillInstagram /> },
+  {
+    title: "LinkedIn",
+    link: "https://www.linkedin.com/in/cristian-albu-3b7026167/",
+    icon: <AiFillLinkedin />,
+  },
+  {
+    title: "GitHub",
+    link: "https://github.com/cristian-albu",
+    icon: <AiFillGithub />,
+  },
+  {
+    title: "Instagram",
+    link: "https://www.instagram.com/cristian_albu_kdz",
+    icon: <AiFillInstagram />,
+  },
 ];
 
 export const contactData: NavData[] = [
@@ -42,12 +57,12 @@ export const contactData: NavData[] = [
   },
   {
     title: "Telegram",
-    link: "albucristian95p@gmail.com",
+    link: "https://t.me/cristianAlbu",
     icon: <FaTelegramPlane />,
   },
   {
     title: "WhatsApp",
-    link: "albucristian95p@gmail.com",
+    link: "https://wa.me/40734315636",
     icon: <FaWhatsapp />,
   },
 ];

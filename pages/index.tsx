@@ -9,8 +9,11 @@ import React from "react";
 const Index: NextPage = () => {
   return (
     <>
-      <DynHead title="Cristian Albu" description="" image="" />
-
+      <DynHead
+        title="Cristian Albu"
+        description=""
+        image="/assets/cristian-albu.png"
+      />
       <HeroSection />
     </>
   );
