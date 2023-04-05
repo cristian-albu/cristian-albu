@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { heroSectionData } from "@/data/homeData";
+import { heroSectionData } from "@/staticData/homeData";
 
 const styles = {
   constelationStyle: `aspect-square rounded-full  border-[1px] border-transparent  absolute `,

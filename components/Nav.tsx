@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navData, NavDataType } from "@/data/navData";
+import { navData, NavDataType } from "@/staticData/navData";
 import Link from "next/link";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { useRouter } from "next/router";

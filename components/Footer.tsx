@@ -1,9 +1,13 @@
 import React from "react";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
-
 import Link from "next/link";
-import { contactData, footerData, NavDataType, navData } from "@/data/navData";
+import {
+  contactData,
+  footerData,
+  NavDataType,
+  navData,
+} from "@/staticData/navData";
 
 const Footer = () => {
   return (
