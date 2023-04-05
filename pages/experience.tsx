@@ -1,7 +1,6 @@
 import DynHead from "@/components/DynHead";
-import ExperienceTimeline from "@/components/Pages/ExperienceTimeline";
 import { NextPage } from "next";
-import React from "react";
+import React, { useState } from "react";
 
 const Experience: NextPage = () => {
   return (
@@ -11,7 +10,6 @@ const Experience: NextPage = () => {
         description=""
         image="/assets/cristian-albu.png"
       />
-      <ExperienceTimeline />
     </div>
   );
 };

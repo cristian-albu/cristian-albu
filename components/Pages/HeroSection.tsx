@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import { heroSectionData } from "@/data/homeData";
-import { techUsedObj } from "@/data/skill";
 
 const styles = {
   constelationStyle: `aspect-square rounded-full  border-[1px] border-transparent  absolute `,
@@ -25,7 +24,7 @@ const HeroSection = () => {
               className={`w-[100%] ${styles.constelationStyle}  top-0 left-0 animate-spinning1 border-l-black border-b-black border-r-0`}
             >
               <Image
-                src={techUsedObj.typescript.icon}
+                src={"/assets/tech-icons/Typescript_logo.png"}
                 width={30}
                 height={30}
                 alt=""
@@ -36,7 +35,7 @@ const HeroSection = () => {
               className={`w-[82%] ${styles.constelationStyle} top-[9%] left-[9%] animate-spinning2 border-t-black border-r-black border-b-0`}
             >
               <Image
-                src={techUsedObj.react.icon}
+                src={"/assets/tech-icons/React.svg"}
                 width={30}
                 height={30}
                 alt=""
@@ -47,7 +46,7 @@ const HeroSection = () => {
               className={`w-[65%]  ${styles.constelationStyle}  top-[17.5%] left-[17.5%] animate-spinning3 border-r-black border-t-black border-l-0`}
             >
               <Image
-                src={techUsedObj.nextjs.icon}
+                src={"/assets/tech-icons/nextjs_logo.png"}
                 width={30}
                 height={30}
                 alt=""
@@ -58,7 +57,7 @@ const HeroSection = () => {
               className={`w-[50%]  ${styles.constelationStyle}  top-[25%] left-[25%] animate-spinning2 border-b-black border-l-black border-t-0`}
             >
               <Image
-                src={techUsedObj.tailwindcss.icon}
+                src={"/assets/tech-icons/tailwindcss_logo.png"}
                 width={30}
                 height={30}
                 alt=""
