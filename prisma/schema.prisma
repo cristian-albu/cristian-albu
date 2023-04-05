@@ -12,14 +12,16 @@ datasource db {
 }
 
 model SkillCategory {
-  id     Int     @id @default(autoincrement())
-  name   String  @unique
+  id     String  @id
   Skills Skill[]
 }
 
 model Skill {
-  id         Int             @id @default(autoincrement())
-  name       String          @unique
+  id         Int           @id @default(autoincrement())
+  name       String        @unique
   icon       String
-  categories SkillCategory[]
+  category   SkillCategory @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@index([categoryId])
 }
