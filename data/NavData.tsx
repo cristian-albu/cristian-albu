@@ -13,13 +13,13 @@ import {
 import { MdAlternateEmail } from "react-icons/md";
 import { FaTelegramPlane, FaWhatsapp } from "react-icons/fa";
 
-export interface NavData {
+export interface NavDataType {
   title: string;
   link: string;
   icon?: JSX.Element;
 }
 
-export const navData: NavData[] = [
+export const navData: NavDataType[] = [
   { title: "Home", link: "/", icon: <HiOutlineHome /> },
   { title: "Projects", link: "/projects", icon: <HiOutlineDesktopComputer /> },
   {
@@ -31,7 +31,7 @@ export const navData: NavData[] = [
   { title: "Contact", link: "/contact", icon: <HiOutlineMailOpen /> },
 ];
 
-export const footerData: NavData[] = [
+export const footerData: NavDataType[] = [
   {
     title: "LinkedIn",
     link: "https://www.linkedin.com/in/cristian-albu-3b7026167/",
@@ -49,7 +49,7 @@ export const footerData: NavData[] = [
   },
 ];
 
-export const contactData: NavData[] = [
+export const contactData: NavDataType[] = [
   {
     title: "Email",
     link: "albucristian95p@gmail.com",

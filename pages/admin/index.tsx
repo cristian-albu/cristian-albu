@@ -1,3 +1,4 @@
+import Skills from "@/components/admin/Skills";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
 import {
@@ -14,7 +15,15 @@ import { authOptions } from "../api/auth/[...nextauth]";
 const Index: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ session }) => {
-  return <div></div>;
+  return (
+    <div className="min-h-[90vh] flex flex-col w-full justify-center items-center gap-3">
+      <Section>
+        <Wrapper>
+          <Skills />
+        </Wrapper>
+      </Section>
+    </div>
+  );
 };
 export default Index;
 

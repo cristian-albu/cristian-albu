@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navData, NavData } from "@/data/navData";
+import { navData, NavDataType } from "@/data/navData";
 import Link from "next/link";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { useRouter } from "next/router";
@@ -35,7 +35,7 @@ const Nav = () => {
           } md:scale-[1] bg-black  flex-col md:flex-row md:static md:bg-transparent`}
         >
           {navData.map(
-            (item: NavData, index: number) =>
+            (item: NavDataType, index: number) =>
               index > 0 && (
                 <Link
                   key={item.title}
