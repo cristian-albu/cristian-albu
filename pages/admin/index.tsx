@@ -1,4 +1,3 @@
-import Skills from "@/components/admin/Skills";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
 import {
@@ -10,105 +9,67 @@ import { getServerSession } from "next-auth";
 import React, { useState } from "react";
 import { authOptions } from "../api/auth/[...nextauth]";
 import db from "@/lib/prisma";
-import { Skill, SkillCategory } from "@prisma/client";
-import axios from "axios";
+import { Skill } from "@prisma/client";
+import Image from "next/image";
+import { getCloudinaryImages } from "@/lib/cloudinary";
+import EditSkill from "@/components/admin/EditSkill";
+import AddSkill from "@/components/admin/AddSkill";
+import AddSkillCategory from "@/components/admin/AddSkillCategory";
 
 const Index: NextPage<
   InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ session, skillCategory, skills }) => {
-  console.log(skillCategory, skills);
+> = ({ skillCategory, skills, techIconsList }) => {
+  const [dbSkillState, setDbSkillState] = useState(skills);
 
-  const [skillCategoryState, setSkillCategoryState] = useState("");
-
-  const [skillState, setSkillState] = useState({
-    name: "",
-    icon: "",
-    categoryId: "",
-  });
-
-  const handleNewSkillCategory = async () => {
-    const payload: SkillCategory = { id: skillCategoryState };
-
-    try {
-      const newSkillCategory = await axios.post(
-        "/api/admin/new-skill-category",
-        { payload }
-      );
-
-      console.log(newSkillCategory);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleNewSkill = async () => {
-    const payload: Skill = {
-      id: 0,
-      name: skillState.name,
-      icon: skillState.icon,
-      categoryId: skillState.categoryId,
-    };
-
-    try {
-      const newSkillCategory = await axios.post("/api/admin/new-skill", {
-        payload,
-      });
-
-      console.log(newSkillCategory);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log("Text");
   return (
     <div className="min-h-[90vh] flex flex-col w-full justify-center items-center gap-3">
       <Section>
         <Wrapper>
-          <div className="flex flex-col gap-3 w-full">
-            <div className="w-full flex flex-col gap-3 items-start justify-start max-w-[48%]">
-              <input
-                type="text"
-                value={skillCategoryState}
-                onChange={({ target }) => setSkillCategoryState(target.value)}
-                className="border-2 border-black p-1 w-full"
+          <div className="flex gap-3 w-full justify-between items-start">
+            <div className="w-[48%] flex flex-col gap-10 items-start justify-start ">
+              <AddSkill
+                dbSkillState={dbSkillState}
+                setDbSkillState={setDbSkillState}
+                techIconsList={techIconsList}
+                skillCategory={skillCategory}
               />
-              <button onClick={handleNewSkillCategory} className="btnPrimary">
-                Add new skill category
-              </button>
+              <AddSkillCategory />
             </div>
-            <div className="w-full flex flex-col gap-3 items-start justify-start max-w-[48%]">
-              <input
-                type="text"
-                value={skillState.name}
-                onChange={({ target }) =>
-                  setSkillState({ ...skillState, name: target.value })
-                }
-                className="border-2 border-black p-1 w-full"
-              />
-              <input
-                type="text"
-                value={skillState.icon}
-                onChange={({ target }) =>
-                  setSkillState({ ...skillState, icon: target.value })
-                }
-                className="border-2 border-black p-1 w-full"
-              />
-              <input
-                type="text"
-                value={skillState.categoryId}
-                onChange={({ target }) =>
-                  setSkillState({
-                    ...skillState,
-                    categoryId: target.value,
-                  })
-                }
-                className="border-2 border-black p-1 w-full"
-              />
-              <button onClick={handleNewSkill} className="btnPrimary">
-                Add new skill
-              </button>
+            <div className="w-[48%] flex flex-col items-start justify-start gap-3">
+              <p className="text-3xl">Skills:</p>
+              <div className="w-full flex flex-col items-start justify-start gap-4 h-[60vh] overflow-scroll p-5 border-2 border-black rounded-md">
+                {dbSkillState.map((item: Skill) => (
+                  <div
+                    key={item.name}
+                    className="grid grid-cols-6 gap-3 items-center justify-between w-full"
+                  >
+                    <div className="flex gap-2 items-center col-span-4 ">
+                      <Image
+                        src={item.icon}
+                        width={25}
+                        height={25}
+                        alt=""
+                        className="w-[25px] aspect-square object-contain"
+                      />
+                      <p> {item.name}</p>
+                      <p className="italic text-sm text-gray-500">
+                        {item.categoryId}
+                      </p>
+                    </div>
+
+                    <EditSkill
+                      item={item}
+                      dbSkillState={dbSkillState}
+                      setDbSkillState={setDbSkillState}
+                      skillCategory={skillCategory}
+                      techIconsList={techIconsList}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <Skills />
         </Wrapper>
       </Section>
     </div>
@@ -128,9 +89,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
+  const techIconsList: Array<string> = await getCloudinaryImages("tech-icons");
+
   const [skillCategory, skills] = await Promise.all([
     db.skillCategory.findMany(),
-    db.skill.findMany(),
+    db.skill.findMany({ orderBy: [{ id: "desc" }] }),
   ]);
 
   return {
@@ -138,6 +101,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       session,
       skillCategory,
       skills,
+      techIconsList,
     },
   };
 }

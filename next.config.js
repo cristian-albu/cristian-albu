@@ -5,6 +5,7 @@ const nextConfig = {
     domains: [
       "https://avatars.githubusercontent.com",
       "avatars.githubusercontent.com",
+      "res.cloudinary.com",
     ],
   },
 };

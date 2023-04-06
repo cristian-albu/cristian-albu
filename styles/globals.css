@@ -55,4 +55,8 @@
   .btnSecondary {
     @apply bg-transparent text-inherit border-2 border-black px-3 py-2 rounded-lg shadow-lg text-center flex justify-center items-center gap-2 transition hover:scale-[1.03] active:scale-[0.97] hover:bg-black hover:text-white;
   }
+
+  .inputPrimary {
+    @apply border-2 border-black p-1 px-2 w-full rounded-md;
+  }
 }

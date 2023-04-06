@@ -6,10 +6,11 @@ import { Skill, SkillCategory } from "@prisma/client";
 
 interface Response {
   data: string;
+  skill?: Skill;
   error: string | null;
 }
 
-function instanceOfSkill(object: any): object is Skill {
+export function instanceOfSkill(object: any): object is Skill {
   return "name" && "icon" && "categoryId" in object;
 }
 
@@ -52,10 +53,22 @@ export const handler = async (
       },
     });
 
-    return res.status(200).json({
-      data: `New Skill ${payload.name} created`,
-      error: null,
+    const newSkill = await db.skill.findFirst({
+      where: { name: payload.name },
     });
+
+    if (newSkill) {
+      return res.status(200).json({
+        data: `New Skill ${payload.name} created`,
+        skill: newSkill,
+        error: null,
+      });
+    } else {
+      return res.status(400).json({
+        data: "",
+        error: `An error occured. Could not create or retrieve new skill`,
+      });
+    }
   } catch (error) {
     return res
       .status(400)
