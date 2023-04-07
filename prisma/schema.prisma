@@ -25,3 +25,10 @@ model Skill {
 
   @@index([categoryId])
 }
+
+model CaseStudy {
+  id      String @id @default(uuid())
+  title   String
+  slug    String
+  content String @db.Text
+}
