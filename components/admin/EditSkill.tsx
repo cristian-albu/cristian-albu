@@ -39,7 +39,7 @@ const EditSkill = ({
 
   const handleDeleteSkill = async (skill: Skill) => {
     try {
-      const deleteSkill = await axios.post("/api/admin/delete-skill", {
+      await axios.post("/api/admin/delete-skill", {
         payload: skill,
       });
 

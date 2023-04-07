@@ -14,6 +14,15 @@ module.exports = {
         primary: ["var(--josefin)"],
         serif: ["var(--josefin)"],
       },
+      typographt: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme("colors.blue.600"),
+            },
+          },
+        },
+      }),
       keyframes: {
         spin1: {
           "0%": { transform: "rotate(0deg)" },
@@ -45,5 +54,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

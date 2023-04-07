@@ -21,7 +21,6 @@ const Index: NextPage<
 > = ({ skillCategory, skills, techIconsList }) => {
   const [dbSkillState, setDbSkillState] = useState(skills);
 
-  console.log("Text");
   return (
     <div className="min-h-[90vh] flex flex-col w-full justify-center items-center gap-3">
       <Section>
