@@ -51,7 +51,10 @@ const Index: NextPage<
                         alt=""
                         className="w-[25px] aspect-square object-contain"
                       />
-                      <p> {item.name}</p>
+                      <p>
+                        {item.name}{" "}
+                        <span className="text-xs text-gray-400">{`(id: ${item.id})`}</span>
+                      </p>
                       <p className="italic text-sm text-gray-500">
                         {item.categoryId}
                       </p>

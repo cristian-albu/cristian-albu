@@ -36,6 +36,7 @@ export const handler = async (
         slug: payload.slug,
         mainImage: payload.mainImage,
         content: payload.content,
+        description: payload.description,
       },
     });
 

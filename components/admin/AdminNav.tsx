@@ -14,6 +14,9 @@ const AdminNav = () => {
       <Link href="/admin/skills" className={navStyle}>
         Skills
       </Link>
+      <Link href="/admin/experience" className={navStyle}>
+        Experience
+      </Link>
     </div>
   );
 };

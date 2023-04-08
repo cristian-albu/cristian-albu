@@ -11,6 +11,7 @@ export const emptyState = {
   slug: "",
   mainImage: "",
   content: "",
+  description: "",
 };
 
 const AddCaseStudy = () => {

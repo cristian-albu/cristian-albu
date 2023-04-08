@@ -23,15 +23,31 @@ model Skill {
   category   SkillCategory @relation(fields: [categoryId], references: [id])
   categoryId String
   caseStudy  CaseStudy[]
+  experience Experience[]  @relation(name: "ExperienceToSkill")
 
   @@index([categoryId])
 }
 
 model CaseStudy {
-  id        String  @id @default(uuid())
-  title     String  @unique
-  slug      String  @unique
-  mainImage String
-  content   String  @db.Text
-  skills    Skill[]
+  id          String       @id @default(uuid())
+  title       String       @unique
+  slug        String       @unique
+  description String       @default("")
+  mainImage   String       @default("")
+  content     String       @db.Text
+  skills      Skill[]
+  experience  Experience[] @relation(name: "ExperienceToCaseStudy")
+}
+
+model Experience {
+  id          String      @id @default(uuid())
+  position    String
+  atCompany   String
+  companyLogo String      @default("")
+  companyLink String      @default("")
+  startDate   DateTime
+  endDate     DateTime
+  summary     String      @db.Text
+  skills      Skill[]     @relation("ExperienceToSkill")
+  caseStudies CaseStudy[] @relation("ExperienceToCaseStudy")
 }

@@ -31,6 +31,9 @@ const CaseStudyComponent = ({
   const [slugState, setSlug] = useState(data?.slug ?? "");
   const [mdContent, setMdContent] = useState(data?.content ?? "");
   const [mainImageState, setMainImageState] = useState(data?.mainImage ?? "");
+  const [descriptionState, setDescriptionState] = useState(
+    data?.description ?? ""
+  );
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -66,6 +69,7 @@ const CaseStudyComponent = ({
       slug: slugState,
       mainImage: mainImageState,
       content: mdContent,
+      description: descriptionState,
     };
 
     if (
@@ -75,6 +79,7 @@ const CaseStudyComponent = ({
       editorData.title.length > 0 &&
       editorData.slug.length > 0 &&
       editorData.content.length > 0 &&
+      editorData.description.length > 0 &&
       mainImageState.startsWith("https://res.cloudinary.com")
     ) {
       setData(editorData);
@@ -111,6 +116,17 @@ const CaseStudyComponent = ({
             onChange={({ target }) => setSlug(target.value)}
             className={`inputPrimary mb-5 ${
               slugState.length > 125 && "border-red-500"
+            }`}
+          />
+          <label htmlFor="description">Description:</label>
+          <input
+            name="description"
+            type="text"
+            placeholder="Description..."
+            value={descriptionState}
+            onChange={({ target }) => setDescriptionState(target.value)}
+            className={`inputPrimary mb-5 ${
+              descriptionState.length > 255 && "border-red-500"
             }`}
           />
           <label htmlFor="mainImg">Main Image:</label>
@@ -158,6 +174,8 @@ const CaseStudyComponent = ({
                 titleState.length < 1 ||
                 slugState.length < 1 ||
                 mdContent.length < 1 ||
+                descriptionState.length > 255 ||
+                descriptionState.length < 1 ||
                 !mainImageState.startsWith("https://res.cloudinary.com") ||
                 !canSave
               }
@@ -167,6 +185,7 @@ const CaseStudyComponent = ({
               Save
             </button>
             <p className="mb-5 col-span-4">{slugify(titleState)}</p>
+            <p className="col-span-6 mb-5">{descriptionState}</p>
           </div>
 
           <div className="w-full flex flex-col justify-start items-start">
