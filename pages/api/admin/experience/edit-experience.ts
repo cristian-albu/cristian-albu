@@ -50,8 +50,11 @@ export const handler = async (
       }
     );
 
-    // Create a new experience in the database using the payload and filtered skill and case study IDs.
-    const newExperience = await db.experience.create({
+    // Update the experience
+    const newExperience = await db.experience.update({
+      where: {
+        id: payload.id,
+      },
       data: {
         position: payload.position,
         atCompany: payload.atCompany,
