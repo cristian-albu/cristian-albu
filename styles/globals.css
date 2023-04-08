@@ -57,6 +57,6 @@
   }
 
   .inputPrimary {
-    @apply border-2 border-black p-1 px-2 w-full rounded-md;
+    @apply border-2 border-black p-1 px-2 w-full rounded-md outline-none focus:outline-none;
   }
 }

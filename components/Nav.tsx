@@ -4,7 +4,7 @@ import Link from "next/link";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { useRouter } from "next/router";
 
-const navStyle = `flex items-center  gap-2 py-2 px-3 hover:bg-white hover:text-black transition border-y-4 border-y-transparent min-h-[3rem] relative z-[51]`;
+export const navStyle = `flex items-center  gap-2 py-2 px-3 hover:bg-white hover:text-black transition border-y-4 border-y-transparent min-h-[3rem] relative z-[51]`;
 const home = navData[0];
 
 const Nav = () => {

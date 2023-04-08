@@ -22,13 +22,16 @@ model Skill {
   icon       String
   category   SkillCategory @relation(fields: [categoryId], references: [id])
   categoryId String
+  caseStudy  CaseStudy[]
 
   @@index([categoryId])
 }
 
 model CaseStudy {
-  id      String @id @default(uuid())
-  title   String
-  slug    String
-  content String @db.Text
+  id        String  @id @default(uuid())
+  title     String  @unique
+  slug      String  @unique
+  mainImage String
+  content   String  @db.Text
+  skills    Skill[]
 }
